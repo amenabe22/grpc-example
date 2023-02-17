@@ -1,0 +1,6 @@
+autopep8==2.0.1
+grpcio==1.51.1
+grpcio-tools==1.51.1
+protobuf==4.21.12
+pycodestyle==2.10.0
+tomli==2.0.1
