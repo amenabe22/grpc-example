@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+
+package test;
+
+option go_package = "/core";
+
+// The test service definition
+
+service Test {
+    // Unary
+    rpc SayHello (HelloRequest) returns (HelloReply);
+
+    // rpc server streaming
+    rpc ParrotSaysHello (HelloRequest) returns (stream HelloReply);
+
+    // client streaming
+    rpc ChattyClientSaysHello (stream HelloRequest) returns (DelayedReply);
+
+    // Both streaming
+    rpc InteractingHello (stream HelloRequest) returns (stream HelloReply);
+}
+
+// The request message containing the user's name
+message HelloRequest {
+    string name = 1; 
+    string greeting = 2;
+}
+
+// The response message containing the greetings.
+message HelloReply {
+    string message = 1;
+}
+
+message DelayedReply {
+    string message =1;
+    repeated HelloRequest request = 2;
+}
